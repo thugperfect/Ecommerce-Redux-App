@@ -14,7 +14,7 @@ function App() {
     </Route>
   ))
   return (
-    <div>
+    <div className='w-full min-h-[100vh] bg-zinc-900'>
       <RouterProvider router={router}/>
     </div>
   );

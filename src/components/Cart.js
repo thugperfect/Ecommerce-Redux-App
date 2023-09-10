@@ -2,7 +2,7 @@ import React from 'react'
 
 function Cart() {
   return (
-    <div>
+    <div className='bg-white'>
       cart
     </div>
   )
