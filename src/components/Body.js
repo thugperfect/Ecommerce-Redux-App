@@ -10,7 +10,20 @@ function Body({data}) {
 
         {
           data.products?.length>0?
-          data.products.map(k=>(<ItemCard key={k.id} data={k}/>)):<div ><ItemCard/></div>
+          data.products.map(k=>(<ItemCard key={k.id} data={k}/>)):
+          
+          <>
+            <ItemCard/><ItemCard/><ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+
+            
+            </>
 
          
         }
