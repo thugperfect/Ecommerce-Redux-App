@@ -11,11 +11,20 @@ function App() {
   const [data,setData] = useState([])
   const [search,setSearch] = useState('')
   const [cart,setcart] = useState([])
+  const [price,setPrice] = useState(0)
+
+
 
   const addToCart = (arg) =>{
     setcart([...cart,arg])
-    console.log(cart);
+    const p = Number(arg.price)
+
+    setPrice(price+p)
+    
   }
+
+  console.log("price"+price);
+
 
   useEffect(()=>{
     
@@ -27,21 +36,22 @@ function App() {
       })
     }
     fetchData()
-  
+ 
   },[])
   
   
   const filteredArr = search ?  data.products.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.products
+  
   const router =createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Header setSearch={setSearch}/>}>
       <Route index element={<Body data={filteredArr} addToCart={addToCart}/>}></Route>
      
-      <Route path='/cart' element={<Cart data={cart}/>}></Route>
+      <Route path='/cart' element={<Cart data={cart} price={price}/>}></Route>
     </Route>
   ))
  
   return (
-    <div className='w-full min-h-[100vh] bg-zinc-900'>
+    <div className='w-full min-h-[100vh] bg-white dark:bg-zinc-900'>
       <RouterProvider router={router}/>
     </div>
   );
