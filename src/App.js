@@ -27,11 +27,9 @@ function App() {
   },[])
   console.log(data);
   
-  const handleSearch =(prop) =>{
-    setSearch(prop)
-  }
+
   const router =createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<Header setSearch={handleSearch}/>}>
+    <Route path='/' element={<Header setSearch={setSearch}/>}>
       <Route index element={<Body data={data}/>}></Route>
      
       <Route path='/cart' element={<Cart/>}></Route>

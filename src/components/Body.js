@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './Sidebar'
+
 import ItemCard from '../tools/ItemCard'
 
 function Body({data}) {
