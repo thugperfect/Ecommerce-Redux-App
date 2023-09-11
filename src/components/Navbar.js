@@ -1,15 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import useSizeProvider from '../tools/sizeProvider'
 import { BsSearch } from "react-icons/bs";
 const Navbar = () => {
 
   const size = useSizeProvider()
+  const [toggleSearchBar,setToggleSearchBar] = useState(false)
+  const toggleSearch =()=>{
+    setToggleSearchBar(!toggleSearchBar)
+  }
 
-  const searchbar =  <div ><input className=' w-[200px] h-[40px] text-xl text-black outline-none border border-1 border-gray-400 rounded-lg px-2 mr-5' type='text' placeholder='Search for products'/>
+  const searchbar =  <div className='text-center'>
+                            <input className=' w-[200px] h-[40px] text-xl text-black outline-none border border-1 border-gray-400 rounded-lg px-2 mr-5' type='text' placeholder='Search for products'/>
                             <button className='bg-blue-500 h-[40px] pl-4 pr-4 rounded-lg '>Search</button>
                      </div>
 
-  const searchIcon = <div className='w-[40px] h-[40px] rounded-full outline outline-1 outline-gray-400 flex items-center justify-center'><BsSearch/></div>
+  const searchIcon =<div className='flex flex-col items-center'>
+    <div onClick={toggleSearch} className='w-[40px] h-[40px] rounded-full outline outline-1 outline-gray-400 flex items-center justify-center'><BsSearch/></div>
+
+<div className={toggleSearchBar ? "absolute w-[250px] p-5 bg-gray-200 mt-11 rounded-lg bg-opacity-40 ":"hidden"}  >{searchbar}</div>
+  </div>
 
   return (
     <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center'>
