@@ -13,8 +13,7 @@ function Body({data,addToCart}) {
           data?.length > 0 ?
 
           data.map(k=>(<ItemCard key={k.id} data={k} addToCart={addToCart}/>))
-          :<div className='w-full min-h-[40vh] flex justify-center items-center text-2xl'>Nothing in Found</div>
-          
+          :<div className='w-[160vh] min-h-[40vh] flex justify-center items-center text-2xl'>Nothing in Found</div>
          : <>
          <ItemCard/>
          <ItemCard/>

@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import useSizeProvider from '../tools/sizeProvider'
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { BsCartPlus } from "react-icons/bs";
 const Navbar = ({setSearch}) => {
 const [searchnav,setSearchnav] = useState('')
   const size = useSizeProvider()
@@ -43,7 +44,7 @@ const [searchnav,setSearchnav] = useState('')
   
       
       <Link to='/cart'>
-      <div className='cursor-pointer'>My Cart</div>
+      <div className='cursor-pointer'><BsCartPlus className='cart'/></div>
       
       </Link>
     </div>

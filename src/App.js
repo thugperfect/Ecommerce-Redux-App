@@ -31,7 +31,7 @@ function App() {
   useEffect(()=>{
     
     const fetchData =async () =>{
-      await axios.get(`https://dummyjson.com/products/`)
+      await axios.get(`https://dummyjson.com/products?limit=100`)
       .then(res=>{
         const d = res.data
         setData(d)
