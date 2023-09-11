@@ -13,7 +13,9 @@ function Body({data}) {
           data.products.map(k=>(<ItemCard key={k.id} data={k}/>)):
           
           <>
-            <ItemCard/><ItemCard/><ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
             <ItemCard/>
             <ItemCard/>
             <ItemCard/>

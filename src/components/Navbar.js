@@ -2,17 +2,21 @@ import React,{useState} from 'react'
 import useSizeProvider from '../tools/sizeProvider'
 import { BsSearch } from "react-icons/bs";
 import { Link } from 'react-router-dom';
-const Navbar = () => {
-
+const Navbar = ({setSearch}) => {
+const [searchnav,setSearchnav] = useState('')
   const size = useSizeProvider()
   const [toggleSearchBar,setToggleSearchBar] = useState(false)
   const toggleSearch = ()=>{
     setToggleSearchBar(!toggleSearchBar)
   }
+  
+  const sendData = (data) =>{
+    setSearch(data)
+  }
 
   const searchbar =  <div className='text-center'>
-                            <input className=' w-[200px] h-[40px] text-xl text-black outline-none border border-1 border-gray-400 rounded-lg px-2 mr-5' type='text' placeholder='Search for products'/>
-                            <button className='bg-blue-500 h-[40px] pl-4 pr-4 rounded-lg '>Search</button>
+                            <input onChange={e=>setSearchnav(e.target.value)} className=' w-[200px] h-[40px] text-xl text-black outline-none border border-1 border-gray-400 rounded-lg px-2 mr-5' type='text' placeholder='Search for products'/>
+                            <button onClick={()=>sendData(searchnav)} className='bg-blue-500 h-[40px] pl-4 pr-4 rounded-lg '>Search</button>
                      </div>
 
   const searchIcon =<div className='flex flex-col items-center'>

@@ -9,6 +9,7 @@ import axios from 'axios';
 function App() {
 
   const [data,setData] = useState([])
+  const [search,setSearch] = useState('')
 
   useEffect(()=>{
 
@@ -25,13 +26,18 @@ function App() {
     fetchData()
   },[])
   console.log(data);
+  
+  const handleSearch =(prop) =>{
+    setSearch(prop)
+  }
   const router =createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<Header/>}>
+    <Route path='/' element={<Header setSearch={handleSearch}/>}>
       <Route index element={<Body data={data}/>}></Route>
      
       <Route path='/cart' element={<Cart/>}></Route>
     </Route>
   ))
+  console.log(search)
   return (
     <div className='w-full min-h-[100vh] bg-zinc-900'>
       <RouterProvider router={router}/>
