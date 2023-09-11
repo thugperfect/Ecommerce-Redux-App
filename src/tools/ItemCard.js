@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ItemCard = ({data}) => {
+const ItemCard = ({data,addToCart}) => {
 
   
   return (
@@ -10,7 +10,7 @@ data?
         <div className='font-bold text-md px-2'>{data.title}</div>
         <div className='text-xs px-2'>{data.description?.length >60 ? <div>{data.description.slice(0,60)}...</div>:<div>{data.description}</div>}</div>
         <div className='flex justify-center'>
-        <div className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
+        <div onClick={()=>addToCart(data)} className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
 
         </div>
     </div>

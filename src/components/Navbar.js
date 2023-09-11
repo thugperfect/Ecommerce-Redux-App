@@ -14,10 +14,13 @@ const [searchnav,setSearchnav] = useState('')
     setSearch(data)
   }
 
-  const searchbar =  <div className='text-center'>
+  const handleClick =(e) =>{
+    e.preventDefault()
+  }
+  const searchbar =  <form onClick={e=>handleClick(e)} className='text-center'>
                             <input onChange={e=>setSearchnav(e.target.value)} className=' w-[200px] h-[40px] text-xl text-black outline-none border border-1 border-gray-400 rounded-lg px-2 mr-5' type='text' placeholder='Search for products'/>
                             <button onClick={()=>sendData(searchnav)} className='bg-blue-500 h-[40px] pl-4 pr-4 rounded-lg '>Search</button>
-                     </div>
+                     </form>
 
   const searchIcon =<div className='flex flex-col items-center'>
     <div onClick={toggleSearch} className='w-[40px] h-[40px] rounded-full outline outline-1 outline-gray-400  flex items-center justify-center'><BsSearch/></div>
@@ -26,10 +29,10 @@ const [searchnav,setSearchnav] = useState('')
   </div>
 
   return (
-    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 dark:outline-gray-700 sticky top-0'>
+    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 dark:outline-gray-700 sticky top-0 z-10'>
       <div className='flex gap-5 items-center  '>
         <Link to='/'>
-        <div className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>
+        <div onClick={()=>window.location.reload()} className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>
         </Link>
       </div>
      

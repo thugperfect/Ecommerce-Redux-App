@@ -10,32 +10,36 @@ function App() {
 
   const [data,setData] = useState([])
   const [search,setSearch] = useState('')
+  const [cart,setcart] = useState([])
+
+  const addToCart = (arg) =>{
+    setcart([...cart,arg])
+    console.log(cart);
+  }
 
   useEffect(()=>{
-
+    
     const fetchData =async () =>{
-      await axios.get('https://dummyjson.com/products')
+      await axios.get(`https://dummyjson.com/products/`)
       .then(res=>{
         const d = res.data
         setData(d)
       })
-      
-      
-
     }
     fetchData()
-  },[])
-  console.log(data);
   
-
+  },[])
+  
+  
+  const filteredArr = search ?  data.products.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.products
   const router =createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Header setSearch={setSearch}/>}>
-      <Route index element={<Body data={data}/>}></Route>
+      <Route index element={<Body data={filteredArr} addToCart={addToCart}/>}></Route>
      
-      <Route path='/cart' element={<Cart/>}></Route>
+      <Route path='/cart' element={<Cart data={cart}/>}></Route>
     </Route>
   ))
-  console.log(search)
+ 
   return (
     <div className='w-full min-h-[100vh] bg-zinc-900'>
       <RouterProvider router={router}/>
