@@ -21,7 +21,7 @@ const Navbar = () => {
   </div>
 
   return (
-    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center'>
+    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 sticky top-0'>
       <div className='flex gap-5 items-center  '>
         <div className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>
       </div>
