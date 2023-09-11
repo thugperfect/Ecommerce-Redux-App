@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import useSizeProvider from '../tools/sizeProvider'
 import { BsSearch } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 const Navbar = () => {
 
   const size = useSizeProvider()
   const [toggleSearchBar,setToggleSearchBar] = useState(false)
-  const toggleSearch =()=>{
+  const toggleSearch = ()=>{
     setToggleSearchBar(!toggleSearchBar)
   }
 
@@ -23,7 +24,9 @@ const Navbar = () => {
   return (
     <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 sticky top-0'>
       <div className='flex gap-5 items-center  '>
+        <Link to='/'>
         <div className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>
+        </Link>
       </div>
      
         {
@@ -31,7 +34,10 @@ const Navbar = () => {
         }
   
       
+      <Link to='/cart'>
       <div className='cursor-pointer'>My Cart</div>
+      
+      </Link>
     </div>
   )
 }
