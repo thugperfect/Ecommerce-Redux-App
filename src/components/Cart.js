@@ -7,16 +7,16 @@ function Cart({data,price}) {
       {
       data?.length>0
       ? data.map(k=>(
-        <div className='w-full bg-zinc-800 mt-5 mb-5  h-[100px] '>
+        <div className='w-full dark:bg-zinc-800 mt-3 mb-3  h-[150px] '>
           x
         </div>
-      )):""
+      )):<div className='w-full min-h-[40vh] flex justify-center items-center text-2xl'>Nothing in Cart</div>
      }
       </div>
    
 <div className='w-full flex justify-end'>
 {
-  price? <div className='text-4xl'>Total : {price}</div>:""
+  price? <div className='text-4xl'>Total : {price} $</div>:""
 }
     
 </div>

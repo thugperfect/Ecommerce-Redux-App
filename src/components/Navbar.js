@@ -31,8 +31,9 @@ const [searchnav,setSearchnav] = useState('')
   return (
     <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 dark:outline-gray-700 sticky top-0 z-10'>
       <div className='flex gap-5 items-center  '>
-        <Link to='/'>
         <div onClick={()=>window.location.reload()} className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>
+        <Link to='/'>
+          Home
         </Link>
       </div>
      

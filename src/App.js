@@ -16,15 +16,17 @@ function App() {
 
 
   const addToCart = (arg) =>{
-    setcart([...cart,arg])
-    const p = Number(arg.price)
 
-    setPrice(price+p)
+   const prev =  cart.find(k => k.id === arg.id)
+    if(!prev){
+  setcart([...cart,arg])
+  const p = Number(arg.price)
+
+  setPrice(price+p)
+}
+   
     
   }
-
-  console.log("price"+price);
-
 
   useEffect(()=>{
     

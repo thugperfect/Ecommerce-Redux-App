@@ -9,24 +9,26 @@ function Body({data,addToCart}) {
       <div className='w-full h-[40px]' ></div>
         <div className='container w-4/5 mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-5 '>
 
-        {
+        {data ?
           data?.length > 0 ?
 
           data.map(k=>(<ItemCard key={k.id} data={k} addToCart={addToCart}/>))
-          :<>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
+          :<div className='w-full min-h-[40vh] flex justify-center items-center text-2xl'>Nothing in Found</div>
+          
+         : <>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
+         <ItemCard/>
 
-            
-            </>
+         
+         </>
 
          
         }
