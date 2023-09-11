@@ -16,13 +16,13 @@ const Navbar = () => {
                      </div>
 
   const searchIcon =<div className='flex flex-col items-center'>
-    <div onClick={toggleSearch} className='w-[40px] h-[40px] rounded-full outline outline-1 outline-gray-400 flex items-center justify-center'><BsSearch/></div>
+    <div onClick={toggleSearch} className='w-[40px] h-[40px] rounded-full outline outline-1 outline-gray-400  flex items-center justify-center'><BsSearch/></div>
 
 <div className={toggleSearchBar ? "absolute w-[250px] p-5 bg-gray-200 mt-11 rounded-lg bg-opacity-40 ":"hidden"}  >{searchbar}</div>
   </div>
 
   return (
-    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 sticky top-0'>
+    <div className='dark:bg-black dark:text-white bg-white h-[70px] flex justify-between px-5 items-center outline outline-b-1 outline-gray-200 dark:outline-gray-700 sticky top-0'>
       <div className='flex gap-5 items-center  '>
         <Link to='/'>
         <div className='text-[20px] md:text-[30px] cursor-pointer '>Kumazon</div>

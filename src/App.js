@@ -4,11 +4,30 @@ import { createBrowserRouter,createRoutesFromElements,RouterProvider,Route } fro
 import Header from './components/Header';
 import Body from './components/Body';
 import Cart from './components/Cart';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 function App() {
 
+  const [data,setData] = useState([])
+
+  useEffect(()=>{
+
+    const fetchData =async () =>{
+      await axios.get('https://dummyjson.com/products')
+      .then(res=>{
+        const d = res.data
+        setData(d)
+      })
+      
+      
+
+    }
+    fetchData()
+  },[])
+  console.log(data);
   const router =createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Header/>}>
-      <Route index element={<Body/>}></Route>
+      <Route index element={<Body data={data}/>}></Route>
      
       <Route path='/cart' element={<Cart/>}></Route>
     </Route>
