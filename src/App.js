@@ -41,7 +41,6 @@ function App() {
  
   },[])
   
-  
   const filteredArr = search ?  data.products.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.products
   
   const router =createBrowserRouter(createRoutesFromElements(

@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiFillStar } from "react-icons/ai";
+import ReviewStar from './ReviewStar';
 
 function Cart({data,price}) {
   return (
@@ -12,10 +13,10 @@ function Cart({data,price}) {
           <img src={k.thumbnail} alt="product-image" className='w-[150px] h-[150px] rounded-l-lg'></img>
           <div className=' ml-5'>
             <div className='font-bold text-lg'>{k.title}</div>
-            <div className='w-[300px]'>{k.description}</div>
+            <div className='w-[400px] hidden md:block'>{k.description}</div>
           </div>
-           <div className='flex'><AiFillStar className='color'/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-          <div className='text-2xl'>Price: {k.price} $</div>
+        <ReviewStar star = {k.rating}/>
+          <div className='text-2xl '>Price: {k.price} $</div>
         
         </div>
       )):<div className='w-full min-h-[40vh] flex justify-center items-center text-2xl'>Nothing in Cart</div>
