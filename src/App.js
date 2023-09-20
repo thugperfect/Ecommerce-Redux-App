@@ -6,13 +6,14 @@ import Body from './components/Body';
 import Cart from './components/Cart';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { fetchDataApi } from './redux/operations/getDataSlice';
 function App() {
 
+  const dispatch = useDispatch()
+  const dataFetched  = useSelector(state=>state.data)
   
-  const dataFetched  = useSelector(state=>state)
-  console.log(dataFetched);
-  const [data,setData] = useState([])
+   const [data,setData] = useState(dataFetched)
   const [search,setSearch] = useState('')
   const [cart,setcart] = useState([])
   const [price,setPrice] = useState(0)
@@ -42,8 +43,10 @@ function App() {
       })
     }
     fetchData()
+
+dispatch(fetchDataApi())
  
-  },[])
+  },[dispatch])
   
   const filteredArr = search ?  data.products.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.products
   
