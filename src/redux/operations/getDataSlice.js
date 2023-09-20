@@ -14,18 +14,19 @@ export const dataSlice = createSlice({
     initialState,
     reducers:{
         fetchDataRequest:(state,action)=>{
-            state.isLoading = true,
+            state.isLoading = true
             state.data =[]
             state.error = ""
+            
         },
         fetchDataSuccess:(state,action)=>{
-            state.isLoading = false,
+            state.isLoading = false
             state.data = action.payload
             state.error = ''
         },
         fetchDataFailure:(state,action)=>{
-            state.isLoading = false,
-            state.data = [],
+            state.isLoading = false
+            state.data = []
             state.error = action.payload
         }
 
@@ -33,14 +34,17 @@ export const dataSlice = createSlice({
 })
 
 export const {fetchDataRequest,fetchDataSuccess,fetchDataFailure} = dataSlice.actions
-export const fetchData = createAsyncThunk('data/fetchData',async (dispatch)=>{
-    dispatch(fetchDataRequest())
+export const fetchData = createAsyncThunk(async (dispatch)=>{
+  
     try {
-        axios.get('https://dummyjson.com/products?limit=100')
-        .then(res=>{
-            const d = res.data.products
-            dispatch(fetchDataSuccess(d))
+        dispatch(fetchDataRequest())
+        await axios.get('https://dummyjson.com/products?limit=100')
+        .then(res=> {
+            const data = res.data.map(k=>k.products)
+            dispatch(fetchDataSuccess(data))
         })
+        
+        
        
     } catch (error) {
        dispatch(fetchDataFailure(error.message))

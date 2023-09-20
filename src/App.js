@@ -6,8 +6,12 @@ import Body from './components/Body';
 import Cart from './components/Cart';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 function App() {
 
+  
+  const dataFetched  = useSelector(state=>state)
+  console.log(dataFetched);
   const [data,setData] = useState([])
   const [search,setSearch] = useState('')
   const [cart,setcart] = useState([])
