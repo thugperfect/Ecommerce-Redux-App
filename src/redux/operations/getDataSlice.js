@@ -32,13 +32,19 @@ export const dataSlice = createSlice({
     }
 })
 
-export const fetchData = createAsyncThunk('data/fetchData',async ()=>{
+export const {fetchDataRequest,fetchDataSuccess,fetchDataFailure} = dataSlice.actions
+export const fetchData = createAsyncThunk('data/fetchData',async (dispatch)=>{
+    dispatch(fetchDataRequest())
     try {
-        const res = axios.get('https://dummyjson.com/products?limit=100')
+        axios.get('https://dummyjson.com/products?limit=100')
         .then(res=>{
-            return res.data.products
+            const d = res.data.products
+            dispatch(fetchDataSuccess(d))
         })
+       
     } catch (error) {
-        return error
+       dispatch(fetchDataFailure(error.message))
     }
 })
+
+export default dataSlice.reducer
