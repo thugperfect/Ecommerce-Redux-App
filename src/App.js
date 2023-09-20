@@ -13,9 +13,8 @@ function App() {
   const dispatch = useDispatch()
   const dataFetched  = useSelector(state=>state.data)
   
-   const [data,setData] = useState(dataFetched.data)
+   const [data,setData] = useState([dataFetched])
 
-   console.log(data);
   const [search,setSearch] = useState('')
   const [cart,setcart] = useState([])
   const [price,setPrice] = useState(0)
@@ -35,17 +34,18 @@ function App() {
     
   }
 
+
   useEffect(()=>{
 
 dispatch(fetchDataApi())
- 
+ console.log(data);
   },[dispatch])
   
-  const filteredArr = search ?  data.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data
+  const filteredArr = search ?  data.data.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.data
   
   const router =createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Header setSearch={setSearch}/>}>
-      <Route index element={<Body data={filteredArr} addToCart={addToCart}/>}></Route>
+      <Route index element={<Body data={filteredArr} loading={data.isLoading} addToCart={addToCart}/>}></Route>
      
       <Route path='/cart' element={<Cart data={cart} price={price}/>}></Route>
     </Route>
