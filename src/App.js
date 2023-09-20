@@ -13,7 +13,9 @@ function App() {
   const dispatch = useDispatch()
   const dataFetched  = useSelector(state=>state.data)
   
-   const [data,setData] = useState(dataFetched)
+   const [data,setData] = useState(dataFetched.data)
+
+   console.log(data);
   const [search,setSearch] = useState('')
   const [cart,setcart] = useState([])
   const [price,setPrice] = useState(0)
@@ -34,21 +36,12 @@ function App() {
   }
 
   useEffect(()=>{
-    
-    const fetchData =async () =>{
-      await axios.get(`https://dummyjson.com/products?limit=100`)
-      .then(res=>{
-        const d = res.data
-        setData(d)
-      })
-    }
-    fetchData()
 
 dispatch(fetchDataApi())
  
   },[dispatch])
   
-  const filteredArr = search ?  data.products.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data.products
+  const filteredArr = search ?  data.filter(k=>(k.title.toLowerCase()).includes(search.toLowerCase())) : data
   
   const router =createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Header setSearch={setSearch}/>}>
