@@ -12,8 +12,8 @@ function Cart({data,price}) {
     <div className='container mx-auto w-full md:w-4/5 min-h-[80vh] bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col justify-between'>
       <div className=''>
       {
-      data?.length>0
-      ? data.map(k=>(
+      cartItems?.length>0
+      ? cartItems.map(k=>(
         <div className='w-full dark:bg-zinc-800 mt-3 mb-3  h-[200px] lg:h-[150px] outline outline-1 outline-gray-300 dark:outline-gray-800 rounded-lg flex items-center justify-between'>
           <img src={k.thumbnail} alt="product-image" className='w-[150px] h-[150px] rounded-l-lg'></img>
           <div className=' ml-1'>
