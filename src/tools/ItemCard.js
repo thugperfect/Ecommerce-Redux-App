@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSelector,useDispatch } from 'react-redux';
-import { addToCart } from "../redux/operations/addCartSlice";
+import { useDispatch } from 'react-redux';
+import { addToCartSlice } from "../redux/operations/addCartSlice";
 
 
 
@@ -17,7 +17,7 @@ data?
         <div className='text-xs px-2'>{data.description?.length >60 ? <div>{data.description.slice(0,60)}...</div>:<div>{data.description}</div>}</div>
         <div className='text-xs px-2 font-bold'>${data.price}</div>
         <div className='flex justify-center'>
-        <div onClick={()=>dispatch(addToCart(data))} className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
+        <div onClick={()=>dispatch(addToCartSlice(data))} className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
 
         </div>
     </div>
