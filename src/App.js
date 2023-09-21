@@ -18,18 +18,7 @@ function App() {
   const dataFetched = useSelector((state) => state.data)
 
   const [search, setSearch] = useState("");
-  const [cart, setcart] = useState([]);
-  const [price, setPrice] = useState(0);
 
-  const addToCart = (arg) => {
-    const prev = cart.find((k) => k.id === arg.id);
-    if (!prev) {
-      setcart([...cart, arg]);
-      const p = Number(arg.price);
-
-      setPrice(price + p);
-    }
-  };
 
   useEffect(() => {
     dispatch(fetchDataApi());
@@ -57,7 +46,7 @@ function App() {
 
         <Route
           path="/cart"
-          element={<Cart data={cart} price={price} />}
+          element={<Cart />}
         ></Route>
       </Route>
     )
