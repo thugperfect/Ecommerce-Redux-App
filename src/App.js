@@ -15,7 +15,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchDataApi } from "./redux/operations/getDataSlice";
 function App() {
   const dispatch = useDispatch();
-  const dataFetched = useSelector((state) => state.data);
+  const dataFetched = useSelector((state) => state.data)
+
+  const cartItems = useSelector((state)=>state.cart)
+
+  console.log(cartItems);
 
   const [search, setSearch] = useState("");
   const [cart, setcart] = useState([]);
