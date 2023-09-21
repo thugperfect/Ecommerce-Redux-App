@@ -8,10 +8,9 @@ const initialState = {
 };
 export const fetchDataApi = createAsyncThunk("data/fetchData", async () => {
   try {
-    const res = await fetch("https://dummyjson.com/products?limit=100");
-    const data = await res.json();
-    const d = data.products;
-    return d;
+    const res = await axios.get("https://dummyjson.com/products?limit=100");
+    const data = res.data.products;
+    return data;
   } catch (error) {
     return error.message;
   }

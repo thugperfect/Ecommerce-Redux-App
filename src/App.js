@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import {
   createBrowserRouter,
@@ -10,15 +9,13 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import Cart from "./components/Cart";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDataApi } from "./redux/operations/getDataSlice";
 function App() {
   const dispatch = useDispatch();
-  const dataFetched = useSelector((state) => state.data)
+  const dataFetched = useSelector((state) => state.data);
 
   const [search, setSearch] = useState("");
-
 
   useEffect(() => {
     dispatch(fetchDataApi());
@@ -35,18 +32,10 @@ function App() {
       <Route path="/" element={<Header setSearch={setSearch} />}>
         <Route
           index
-          element={
-            <Body
-              data={filteredArr}
-              loading={dataFetched.isLoading}
-            />
-          }
+          element={<Body data={filteredArr} loading={dataFetched.isLoading} />}
         ></Route>
 
-        <Route
-          path="/cart"
-          element={<Cart />}
-        ></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Route>
     )
   );
