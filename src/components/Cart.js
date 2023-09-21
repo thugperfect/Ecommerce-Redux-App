@@ -1,9 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ReviewStar from "./ReviewStar";
-import { useSelector } from "react-redux";
-
+import { useSelector,useDispatch } from "react-redux";
+import { removeFromCart } from "../redux/operations/addCartSlice";
+import { BsFillTrashFill } from "react-icons/bs";
 function Cart() {
+  const dispatch = useDispatch()
+
   const cartItems = useSelector((state) => state.cart);
 
   const [priceAmt, setPriceAmt] = useState(0);
@@ -13,14 +16,15 @@ function Cart() {
       const d = priceAmt + Number(k.price);
       setPriceAmt(d);
     });
+
   }, [cartItems]);
 
   return (
-    <div className="container mx-auto w-full md:w-4/5 min-h-[80vh] bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col justify-between">
+    <div className="container mx-auto w-full md:w-4/5 min-h-[80vh] bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col justify-between ">
       <div className="">
         {cartItems?.length > 0 ? (
           cartItems.map((k) => (
-            <div className="w-full dark:bg-zinc-800 mt-3 mb-3  h-[200px] lg:h-[150px] outline outline-1 outline-gray-300 dark:outline-gray-800 rounded-lg flex items-center justify-between">
+            <div className="w-full dark:bg-zinc-800 mt-3 mb-3  h-[200px] lg:h-[150px] outline outline-1 outline-gray-300 dark:outline-gray-800 rounded-lg flex items-center justify-between px-2">
               <img
                 src={k.thumbnail}
                 alt="product-image"
@@ -34,6 +38,7 @@ function Cart() {
                 <ReviewStar star={k.rating} />
               </div>
               <div className="text-lg lg:text-2xl mr-5 ">Price: {k.price}$</div>
+              <div onClick={()=>dispatch(removeFromCart(k.id))}><BsFillTrashFill /></div>
             </div>
           ))
         ) : (
