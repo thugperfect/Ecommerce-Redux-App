@@ -1,11 +1,24 @@
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
+import { useState,useEffect } from "react";
 import ReviewStar from "./ReviewStar";
 import { useSelector, useDispatch } from "react-redux";
 
-function Cart({ data, price }) {
+function Cart() {
   const cartItems = useSelector((state) => state.cart);
-  console.log(cartItems);
+ 
+const [priceAmt,setPriceAmt] = useState(0)
+
+useEffect(()=>{
+  const price = cartItems.map(k=>{
+    const d = priceAmt+Number(k.price)
+    setPriceAmt(d)
+    
+
+   })
+},[cartItems])
+   
+
+
 
   return (
     <div className="container mx-auto w-full md:w-4/5 min-h-[80vh] bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col justify-between">
@@ -36,7 +49,7 @@ function Cart({ data, price }) {
       </div>
 
       <div className="w-full flex justify-end">
-        {price ? <div className="text-4xl mb-5">Total : {price} $</div> : ""}
+        {priceAmt ? <div className="text-4xl mb-5">Total : {priceAmt} $</div> : ""}
       </div>
     </div>
   );

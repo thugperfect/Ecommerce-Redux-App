@@ -39,7 +39,6 @@ function App() {
             <Body
               data={filteredArr}
               loading={dataFetched.isLoading}
-              addToCart={addToCart}
             />
           }
         ></Route>

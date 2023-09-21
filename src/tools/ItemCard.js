@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCartSlice } from "../redux/operations/addCartSlice";
 
-const ItemCard = ({ data, addToCart }) => {
+const ItemCard = ({ data}) => {
   const dispatch = useDispatch();
 
   return data ? (

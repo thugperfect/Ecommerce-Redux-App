@@ -2,7 +2,7 @@ import React from "react";
 
 import ItemCard from "../tools/ItemCard";
 
-function Body({ data, addToCart, loading }) {
+function Body({ data, loading }) {
 
   return (
     <div className="flex flex-col  h-full bg-white  dark:bg-zinc-900 text-zinc-900 dark:text-gray-200">
@@ -11,7 +11,7 @@ function Body({ data, addToCart, loading }) {
         {!loading ? (
           data?.length > 0 ? (
             data.map((k) => (
-              <ItemCard key={k.id} data={k} addToCart={addToCart} />
+              <ItemCard key={k.id} data={k}/>
             ))
           ) : (
             <div className="w-[160vh] min-h-[40vh] flex justify-center items-center text-2xl">
