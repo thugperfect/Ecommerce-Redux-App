@@ -1,9 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore,combineReducers } from "@reduxjs/toolkit";
 import dataReducer from '../redux/operations/getDataSlice'
 import cartReducer from '../redux/operations/addCartSlice'
+import thunk from "redux-thunk";
+
+const rootReducer = combineReducers({
+    data: dataReducer,
+    cart: cartReducer,
+  });
+  
 export const store = configureStore({
-    reducer:{
-        data:dataReducer,
-        cart:cartReducer,
-    }
+    reducer:rootReducer,
+    middleware:[thunk],
 })

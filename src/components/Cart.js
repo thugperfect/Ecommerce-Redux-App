@@ -1,8 +1,12 @@
 import React from 'react'
 import { AiFillStar } from "react-icons/ai";
 import ReviewStar from './ReviewStar';
+import { useSelector,useDispatch } from 'react-redux';
 
 function Cart({data,price}) {
+  const cartItems = useSelector((state)=>state.cart)
+
+ 
   return (
     <div className='container mx-auto w-full md:w-4/5 min-h-[80vh] bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col justify-between'>
       <div className=''>

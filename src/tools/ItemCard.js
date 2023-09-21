@@ -1,8 +1,14 @@
 import React from 'react'
+import { useSelector,useDispatch } from 'react-redux';
+import { addToCart } from "../redux/operations/addCartSlice";
+
+
+
 
 const ItemCard = ({data,addToCart}) => {
 
-  
+  const dispatch = useDispatch()
+ 
   return (
 data?
     <div  className='w-[150px] h-[300px] lg:w-[200px] dark:bg-black lg:h-[350px] bg-white outline outline-1 outline-zinc-300  dark:outline-zinc-700 rounded-lg flex flex-col justify-between pb-2'>
@@ -11,7 +17,7 @@ data?
         <div className='text-xs px-2'>{data.description?.length >60 ? <div>{data.description.slice(0,60)}...</div>:<div>{data.description}</div>}</div>
         <div className='text-xs px-2 font-bold'>${data.price}</div>
         <div className='flex justify-center'>
-        <div onClick={()=>addToCart(data)} className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
+        <div onClick={()=>dispatch(addToCart(data))} className='bg-blue-500 w-[100px] text-sm lg:text-lg rounded-sm flex justify-center text-white cursor-pointer '>Add to Cart</div>
 
         </div>
     </div>

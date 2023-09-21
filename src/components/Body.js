@@ -3,6 +3,7 @@ import React from "react";
 import ItemCard from "../tools/ItemCard";
 
 function Body({ data, addToCart, loading }) {
+
   return (
     <div className="flex flex-col  h-full bg-white  dark:bg-zinc-900 text-zinc-900 dark:text-gray-200">
       <div className="w-full h-[40px]"></div>
